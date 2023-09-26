@@ -4,9 +4,10 @@ type Student ={
     age:number
     grades: (Note | undefined)[]
 }
+// type Note= 1 | 2 | 3 | 4 | 5 | 6 | 'A' | 'B' | 'C' | 'D' | 'E' | 'F'
 type Note ={
    // subject:string
-    grade: 1 | 2 | 3 | 4 | 5 | 6 | 'A' | 'B' | 'C' | 'D' | 'E' | 'F'
+    grade: 1 | 2 | 3 | 4 | 5 | 6 | 'A' | 'B' | 'C' | 'D' | 'E' | 'F' // oder hier | undefined
 }
 
 
@@ -33,3 +34,15 @@ const anton2: Student ={
     grades:[{ grade:"A"},{grade:2},undefined,{grade:3},{grade:1},{grade:"B"},undefined,{grade:5}]
 }
 printInformationAboutAStudent(anton2)
+
+console.log("**********************************+")
+type Course={
+    students: Student[]
+}
+function printAllStudentsInCourse(course:Course){
+    for(let i= 0;i<course.students.length;i++){
+        printInformationAboutAStudent(course.students[i])
+    }
+}
+const english: Course={students:[anton1,anton2]}
+printAllStudentsInCourse(english)
