@@ -2,7 +2,7 @@ type Student ={
     firstName: string
     lastName: string
     age:number
-    grades: Note[]
+    grades: (Note | undefined)[]
 }
 type Note ={
    // subject:string
@@ -12,7 +12,7 @@ type Note ={
 
 
 
-const anton: Student ={
+const anton1: Student ={
     firstName:"Anton",
     lastName:"Meier",
     age:17,
@@ -21,8 +21,15 @@ const anton: Student ={
 function printInformationAboutAStudent(student : Student){
     console.log(student.firstName + " " + student.lastName + " (" +student.age + ")")
    console.log("=========================================")
-    console.log("Noten: " + student.grades.map((element)=>{return element.grade}).join(","))
+    console.log("Noten: " + student.grades.map((element)=>{return element? element.grade : "*"}).join(","))
 }
-printInformationAboutAStudent(anton)
+printInformationAboutAStudent(anton1)
 
 //////////
+const anton2: Student ={
+    firstName:"Anton",
+    lastName:"Meier",
+    age:17,
+    grades:[{ grade:"A"},{grade:2},undefined,{grade:3},{grade:1},{grade:"B"},undefined,{grade:5}]
+}
+printInformationAboutAStudent(anton2)
